@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <style>
+        :root {
+            --primary-color: #f0506e; /* Example: Pinkish-red */
+            --bg-color: #282828; /* Dark Background */
+            --text-color: #fff;
+            --secondary-text-color: #aaa;
+            --player-height: 600px; /* Adjust as needed */
+        }
+
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .player-container {
+            width: 375px; 
+            height: var(--player-height);
+            background-color: #181818; 
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cover-image {
+            width: 100%;
+            height: 300px; 
+            object-fit: cover;
+            animation: fadeIn 1s ease-in-out; 
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .song-details {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .song-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .artist-name {
+            font-size: 1rem;
+            color: var(--secondary-text-color);
+            margin-bottom: 15px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 5px;
+            background-color: #333;
+            border-radius: 5px;
+            overflow: hidden; 
+        }
+
+        .progress-track {
+            height: 100%;
+            width: 50%; 
+            background-color: var(--primary-color);
+            border-radius: 5px;
+            animation: progressAnimation 10s linear infinite; 
+        }
+        @keyframes progressAnimation {
+            0% { width: 0%;}
+            100% { width: 100%;}
+        }
+
+        .controls {
+            display: flex;
+            text-decoration: n;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .control-button {
+            text-decoration: none;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.8rem;
+            cursor: pointer;
+           
+            transition: color 0.3s ease;
+        }
+
+        .control-button:hover {
+            color: var(--primary-color);
+        }
+
+        .audio-wave {
+            width: 100%;
+            height: 50px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            animation: audioWaveAnimation 1s linear infinite; 
+        }
+
+        @keyframes audioWaveAnimation {
+            0% { transform: translateY(0); opacity: 0.5; }
+            50% { transform: translateY(-10px); opacity: 1; }
+            100% { transform: translateY(0); opacity: 0.5; }
+        }
+
+        .wave-line {
+            width: 5px;
+            height: 20px;
+            background-color: var(--primary-color);
+            margin: 0 2px;
+            border-radius: 2px;
+            opacity: 0.7; /* Initial opacity */
+            animation: waveLineAnimation 0.8s linear infinite alternate; /* Individual wave animation */
+        }
+
+        @keyframes waveLineAnimation {
+            0% { transform: scaleY(0.4); opacity: 0.4; }
+            100% { transform: scaleY(1.2); opacity: 1; }
+        }
+        .wave-line:nth-child(2) { animation-delay: 0.2s; }
+        .wave-line:nth-child(3) { animation-delay: 0.4s; }
+        .wave-line:nth-child(4) { animation-delay: 0.6s; }
+        .wave-line:nth-child(5) { animation-delay: 0.8s; }
+
+    </style>
+</head>
+<body>
+
+    <div class="player-container">
+        <img class="cover-image" src="https://wallpaperwaifu.com/wp-content/uploads/2019/11/solo-leveling-thumb-1500x844.jpg" alt="Cover Image">
+
+        <div class="song-details">
+            <div class="song-title">Solo Leveling</div>
+            <div class="artist-name">God of Evil</div>
+
+            <div class="progress-bar">
+                <div class="progress-track"></div>
+            </div>
+        </div>
+
+        <div class="controls">
+            
+            <button class="control-button">⏮</button>
+            <button class="control-button">▶</button>
+            <button class="control-button">⏭</button>
+        </div>
+
+        <div class="audio-wave">
+            <div class="wave-line"></div>
+            <div class="wave-line"></div>
+            <div class="wave-line"></div>
+            <div class="wave-line"></div>
+            <div class="wave-line"></div>
+        </div>
+    </div>
+
+</body>
+</html>
